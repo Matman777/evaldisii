@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}4Geek
+{% endblock %}
+
+{% block body %}
+
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+	<body style="background-color:#DAEDF8;">
+
+	<h1 class="font-monospace text-center" style="color: purple;">Bienvenue sur 4Geek, votre site préféré de produits dérivés!</h1>
+	<br/><br/>
+	<h2>Voici nos dernières nouveautés:</h2>
+	<br/><br/>
+	{# </div> #}
+	
+	
+	<div class="col-sm-10 d-flex flex-wrap mx-auto" style="padding:2%">
+		{% for produit in produits %}
+		<div class="col-sm-3 mx-6 mb-4 card justify-content-center align-items-center" style="margin-right: 70px">
+			<img src="{{ asset('uploads/produit/' ~ produit.image) }}" class="col-12" style="width:120px; height:100px;">
+			<h5>{{ produit.nom }}</h5>
+			<p>
+				Stock:
+				{{ produit.stock }}*
+			</p>
+			<a href="{{ path('app_product', {id: produit.id}) }}" class="btn btn-primary">Voir le produit</a>
+		</div>
+		{% endfor %}
+		</div>
+		</body>
+		{% endblock %}

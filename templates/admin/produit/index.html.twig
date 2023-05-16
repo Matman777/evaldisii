@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits
+{% endblock %}
+
+{% block body %}
+<body style="background-color:#DAEDF8;">
+	<h1>Produits</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Description</th>
+				<th>Image</th>
+				<th>Stock</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for produit in produits %}
+				<tr>
+					<td>{{ produit.id }}</td>
+					<td>{{ produit.nom }}</td>
+					<td>{{ produit.description }}</td>
+					<td>{{ produit.image }}</td>
+					<td>{{ produit.stock }}</td>
+					<td>
+						<a href="{{ path('app_admin_produit_show', {'id': produit.id}) }}">Voir</a>
+						<a href="{{ path('app_admin_produit_edit', {'id': produit.id}) }}">Editer</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_admin_produit_new') }}">Enregistrer un nouveau produit</a>
+	</body>
+{% endblock %}

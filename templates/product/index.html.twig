@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lite des produits
+{% endblock %}
+
+{% block body %}
+<body style="background-color:#DAEDF8;">
+	<h1>Voici la liste de tous nos produits:</h1>
+</br></br>
+
+<div class="col-sm-8 d-flex flex-wrap mx-auto">
+{% for produit in produits %}
+	<div class="col-sm-3 mx-6 mb-4 card d-flex justify-content-center align-items-center" style="margin-right: 70px">
+		<img src="{{ asset('uploads/produit/' ~ produit.image) }}" class="col-12" style="width:120px; height:100px;">
+		<h5>{{ produit.nom }}</h5>
+		<p>
+			Stock:
+			{{ produit.stock }}*
+		</p>
+		<a href="{{ path('app_product', {id: produit.id}) }}" class="btn btn-primary">Voir le produit</a>
+	</div>
+	</body>
+{% endfor %}
+
+{% endblock %}
